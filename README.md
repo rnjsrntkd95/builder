@@ -16,7 +16,7 @@
 
 >[dev-server options](https://webpack.js.org/configuration/dev-server/)
 ```javascript
-// webpack.config.js
+// webpack.dev.js
 	devServer: {
 		static: {
 			directory: path.join(__dirname, 'dist'),
@@ -39,7 +39,6 @@ const app = express();
 const config = require('./webpack.config.js');
 const compiler = webpack(config);
 
-// express에서 webpack-dev-middleware와 webpack.config.js를 사용하도록 설정하세요.
 // 기본 설정 파일
 app.use(
   webpackDevMiddleware(compiler, {
@@ -54,7 +53,7 @@ app.listen(3000, function () {
 ```
 
 ```javascript
-// webpack.config.js
+// webpack.common.js
 ...
 output: {
 	...
