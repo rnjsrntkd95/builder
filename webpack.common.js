@@ -29,7 +29,12 @@ module.exports = {
 			},
 			{
 				test: /\.(jpe?g|png|gif|bmp|svg)$/,
-				use: ['file-loader'],
+				type: 'asset/resource',
+				exclude: /node_modules/,
+			},
+			{
+				test: /\.(woff|woff2|eot|ttf|otf)$/i,
+				type: 'asset/resource',
 				exclude: /node_modules/,
 			},
 		],
