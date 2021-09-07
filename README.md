@@ -52,3 +52,13 @@ app.listen(3000, function () {
   console.log('Example app listening on port 3000!\n');
 });
 ```
+
+```javascript
+// webpack.config.js
+...
+output: {
+	...
+	publicPath: '/',  // http://localhost:3000 접속
+	...	
+},
+```
