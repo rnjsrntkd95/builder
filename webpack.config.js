@@ -6,14 +6,18 @@ module.exports = {
 	mode: 'development',
 	devtool: 'source-map',
 	devServer: {
-		static: './dist',
+		static: {
+			directory: path.join(__dirname, 'dist'),
+		},
+		compress: true,
+		port: 9000,
 		historyApiFallback: true,
 	},
 	entry: './src/index.js',
 	output: {
 		path: path.resolve(__dirname, './dist'),
 		filename: 'index.bundle.js',
-		publicPath: '/',
+		publicPath: '/dist/',
 		clean: true,
 	},
 	module: {
