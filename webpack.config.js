@@ -5,27 +5,38 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
 	mode: 'development',
 	devtool: 'source-map',
+	devServer: {
+		static: './dist',
+		historyApiFallback: true,
+	},
 	entry: './src/index.js',
 	output: {
-		path: path.resolve(__dirname, 'public'),
+		path: path.resolve(__dirname, './dist'),
 		filename: 'index.bundle.js',
-		publicPath: 'http://localhost:3000/public',
+		publicPath: '/',
+		clean: true,
 	},
 	module: {
 		rules: [
 			{
-				test: /\.js$/, //.js templating
-				exclude: /node_modules/,
+				test: /\.js$/,
 				use: {
 					loader: 'babel-loader',
 					options: {
 						presets: ['@babel/preset-env'],
 					},
 				},
+				exclude: /node_modules/,
 			},
 			{
-				test: /\.(sa|sc|c)ss$/, //scss,sass,css templating
+				test: /\.(sa|sc|c)ss$/,
 				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+				exclude: /node_modules/,
+			},
+			{
+				test: /\.(jpe?g|png|gif|bmp|svg)$/,
+				use: ['file-loader'],
+				exclude: /node_modules/,
 			},
 		],
 	},
